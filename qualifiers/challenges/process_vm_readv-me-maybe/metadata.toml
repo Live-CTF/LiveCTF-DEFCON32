@@ -1,0 +1,40 @@
+challenge_id = "process_vm_readv-me-maybe"
+
+challenge_name = "process_vm_readv(2) Me Maybe"
+
+challenge_description = '''
+Arbitrary syscalls are too powerful, and ptrace() is overrated.
+Who needs all those extra options when you can just peek and poke memory directly?
+GDB protip:
+    set detach-on-fork off
+    set schedule-multiple on
+'''
+
+challenge_spoilers = '''
+I'm really running out of names for this challenge series, you can't even tell
+what the original pun was!
+
+Anyway! The concept of challenge is pretty straight-forward:
+* Your process forks
+* The parent can read and write arbitrary memory in the child through the syscalls
+* The child maps itself rwx, applies seccomp (only allows getppid and process_vm_writev), and waits
+
+The solution method is a bit more complicated:
+
+Bypass ASLR:
+* You can just read from an invalid address
+* The failed call to process_vm_readv will return junk stack data (which conveniently contains a stack address)
+* And then with the address of the stack you can just leak pointers to everything
+
+Exploit:
+* So the child cannot spawn a shell itself, since seccomp
+* But the child CAN write to the parent and have the parent spawn a shell
+* So the parent needs to write code to the child that writes code to the parent to spawn a shell
+
+My solution ended up reusing the process_vm_writev helper function, so I was a
+bit space-constrained because I couldn't write too much and clobber it.
+I managed to get one_gadget working with only 3 writes to the parent, 
+2 for cleaning up rbp at the return address and 1 for one_gadget.
+The child code was written with asm because binja's SCC generated like 500
+bytes of, while beautifully crafted, very unoptimized shellcode.
+'''

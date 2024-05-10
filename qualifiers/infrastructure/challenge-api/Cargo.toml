@@ -1,0 +1,31 @@
+[package]
+name = "challenge-api"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-multipart-extract = "0.1.5"
+actix-web = "4"
+bytes = "1.5.0"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+common = { path = "../common" }
+deadpool-lapin = "0.11.0"
+derive_more = "0.99.17"
+diesel = { version = "2", features = ["postgres", "uuid", "r2d2", "chrono"] }
+dotenv = "0.15"
+env_logger = "0.10"
+flate2 = "1.0.28"
+google-cloud-storage = "0.15.0"
+hmac = "0.12.1"
+lapin = "2.3.1"
+log = "0.4.20"
+object_store = { version = "0.9.0", features = ["aws", "azure", "gcp"] }
+r2d2 = "0.8.10"
+redis = { version = "0.24", features = ["aio", "tokio-comp"] }
+reqwest = { version = "0.11.23", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+sha2 = "0.10.8"
+tar = "0.4.40"
+uuid = { version = "1", features = ["v4", "serde"] }

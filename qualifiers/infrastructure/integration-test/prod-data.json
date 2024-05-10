@@ -1,0 +1,18 @@
+[
+    {
+        "id": 23,
+        "name": "LiveCTF",
+        "display_name": "LiveCTF",
+        "name_punycode": "LiveCTF",
+        "tickets": {
+            "live-1": "challenge1_55665dd20217ffdf46eeb5adde3241f6",
+            "live-2": "challenge2_c8dcd07c86a71340f57bcadf5756aca7",
+            "live-3": "challenge3_2cfac5e9172585520ef5c8f538713902",
+            "live-4": "challenge4_9361102019c71ef4fc33b449634c6a32",
+            "live-5": "challenge5_2534b513a6faecc6af9369ac6dc4ef58",
+            "live-6": "challenge6_451175bdd403c072a034ba59db68f1e4",
+            "live-7": "challenge7_e6cf4b368c25ce7cf333d708c924d634"
+        },
+        "scores": {}
+    }
+]

@@ -1,0 +1,13 @@
+challenge_id = "qrackme"
+
+challenge_name = "qrackme"
+
+challenge_description = '''
+It's just a crackme!
+'''
+
+challenge_spoilers = '''
+Have you tried counting?
+'''
+
+author = "jordan"

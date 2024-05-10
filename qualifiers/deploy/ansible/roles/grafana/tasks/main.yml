@@ -1,0 +1,32 @@
+
+- name: Install Grafana dependencies
+  become: true
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    name:
+      - adduser
+      - libfontconfig1
+      - musl
+
+- name: Download Grafana
+  delegate_to: localhost
+  run_once: true
+  ansible.builtin.get_url:
+    url: https://dl.grafana.com/enterprise/release/grafana-enterprise_10.4.2_amd64.deb
+    dest: /tmp/grafana-enterprise_10.4.2_amd64.deb
+    mode: '400'
+
+- name: Upload Grafana
+  become: true
+  ansible.builtin.copy:
+    src: /tmp/grafana-enterprise_10.4.2_amd64.deb
+    dest: /tmp/grafana-enterprise_10.4.2_amd64.deb
+
+- name: Install Grafana
+  become: true
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    deb: /tmp/grafana-enterprise_10.4.2_amd64.deb
+  notify: restart grafana

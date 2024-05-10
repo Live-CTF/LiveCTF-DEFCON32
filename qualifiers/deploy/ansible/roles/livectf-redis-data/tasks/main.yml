@@ -1,0 +1,44 @@
+- name: Install Python and Pip
+  become: true
+  ansible.builtin.apt:
+    name:
+      - python3
+      - python3-pip
+    cache_valid_time: 3600
+    state: present
+
+- name: "Install Python redis packages"
+  ansible.builtin.pip: 
+    name:
+      - redis
+      - certifi
+    state: present
+
+- name: "Create list of tokens"
+  ansible.builtin.set_fact:
+    challenge_tokens:
+      challenge1_55665dd20217ffdf46eeb5adde3241f6: "live-1"
+      challenge2_c8dcd07c86a71340f57bcadf5756aca7: "live-2"
+      challenge3_2cfac5e9172585520ef5c8f538713902: "live-3"
+      challenge4_9361102019c71ef4fc33b449634c6a32: "live-4"
+      challenge5_2534b513a6faecc6af9369ac6dc4ef58: "live-5"
+      challenge6_451175bdd403c072a034ba59db68f1e4: "live-6"
+      challenge7_e6cf4b368c25ce7cf333d708c924d634: "live-7"
+
+- name: "Insert LiveCTF team tokens"
+  community.general.redis_data:
+    login_host: localhost
+    tls: false
+    key: "team:{{ item.key }}"
+    value: "23"
+    state: present
+  loop: "{{ challenge_tokens | dict2items }}"
+
+- name: "Insert LiveCTF challenge tokens"
+  community.general.redis_data:
+    login_host: localhost
+    tls: false
+    key: "challenge:{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  loop: "{{ challenge_tokens | dict2items }}"

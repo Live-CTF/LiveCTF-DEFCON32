@@ -1,0 +1,27 @@
+services:
+  web:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/web.Dockerfile
+    image: localhost:5001/livectf-web
+  
+  livectf-api:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: challenge-api
+    image: localhost:5001/livectf-api
+    
+  livectf-builder:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: exploit-builder
+    image: localhost:5001/livectf-builder
+  
+  livectf-runner:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: exploit-runner
+    image: localhost:5001/livectf-runner

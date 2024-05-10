@@ -1,0 +1,46 @@
+[
+    {
+        "id": 2,
+        "name": "Team 1",
+        "display_name": "Team 1",
+        "name_punycode": "Team 1",
+        "tickets": {
+            "live-1": "ticket{SternAnchor6363n22:O0jwvnlc0wC3zC013wY09LGtGwFu-9Jl2Afg6U_Wo3rGt63F}",
+            "live-2": "ticket{WindlassBoat2572n22:Szah-5aTCry4tZ5bb4ExzdMRt5CxYJyJE7DMuG9FJmjEdV4W}"
+        },
+        "scores": {}
+    },
+    {
+        "id": 3,
+        "name": "Team 2",
+        "display_name": "Team 2",
+        "name_punycode": "Team 2",
+        "tickets": {
+            "live-1": "ticket{KeelJib6482n22:iYuswV-6y_MC79cAed87i5gub2_XSxAIUlD459k_ctMpDke9}",
+            "live-2": "ticket{FreeboardPier1937n22:SB7UftFDICePxkiEOuOLxy1lJ6KAC5JNkgK4QRzrVYAnhOKE}"
+        },
+        "scores": {}
+    },
+    {
+        "id": 4,
+        "name": "Team 3",
+        "display_name": "Team 3",
+        "name_punycode": "Team 3",
+        "tickets": {
+            "live-1": "ticket{CapstanJetstream5241n22:liRJB9h0JLur0omDmZSHh9LrhM3Bd77yNKv72I_BxtMmBhZk}",
+            "live-2": "ticket{JacklineSpinnaker2471n22:gwIp2fi6KM6YA9cSpsPCCTFk5nS3qGgGO5n0MY7QgCZ1njtu}"
+        },
+        "scores": {}
+    },
+    {
+        "id": 5,
+        "name": "Team 4",
+        "display_name": "Team 4",
+        "name_punycode": "Team 4",
+        "tickets": {
+            "live-1": "ticket{KeelShip4980n22:k5E6jw7s_JRUqMzNzAgJq5EhRPlW5o2XIJwqDVF0ezRTqpkG}",
+            "live-2": "ticket{JetstreamForecastle2309n22:giygXos3IOfq1KTheQW_HYsn0oyUVfFsGpwQcBhkqhOzCywu}"
+        },
+        "scores": {}
+    }
+]

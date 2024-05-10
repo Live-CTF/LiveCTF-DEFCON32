@@ -1,0 +1,122 @@
+services:
+  web:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/web.Dockerfile
+    ports:
+      - 127.0.0.1:8080:80
+    depends_on:
+      - livectf-api
+
+  livectf-api:
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: challenge-api
+      args:
+        CHEF_FLAGS: ""
+        BUILD_FLAGS: ""
+    ports:
+      - "127.0.0.1:9000:${API_PORT}"
+    environment:
+      - ADMIN_KEY
+      - AMQP_ADDR
+      - API_HOST
+      - API_PORT
+      - AUTH_KEY
+      - AUTH_URL
+      - DATABASE_URL
+      - EXPLOITS_PATH
+      - EXPLOITS_STORAGE
+      - "GOOGLE_APPLICATION_CREDENTIALS_JSON=${GOOGLE_SERVICE_ACCOUNT_KEY}"
+      - HMAC_KEY
+      - REDIS_HOST
+      - RUST_LOG
+    depends_on:
+      - database
+      - messagequeue
+    volumes:
+      - livectf_exploits:/data/exploits
+    restart: on-failure
+
+  livectf-builder:
+    privileged: true
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: exploit-builder
+      args:
+        CHEF_FLAGS: ""
+        BUILD_FLAGS: ""
+    environment:
+      - AMQP_ADDR
+      - BUILD_PATH
+      - CONTAINER_RUNNER
+      - DATABASE_URL
+      - "EXPLOIT_DOCKER_REPO=${DOCKER_REPO_EXT}"
+      - EXPLOITS_PATH
+      - EXPLOITS_STORAGE
+      - GOOGLE_SERVICE_ACCOUNT_KEY
+    depends_on:
+      - database
+      - messagequeue
+    volumes:
+    - livectf_exploits:/data/exploits
+    - livectf_credentials:/credentials
+    restart: on-failure
+
+  livectf-runner:
+    privileged: true
+    build:
+      context: ../../infrastructure
+      dockerfile: ../deploy/docker/livectf.Dockerfile
+      target: exploit-runner
+      args:
+        CHEF_FLAGS: ""
+        BUILD_FLAGS: ""
+    environment:
+      - AMQP_ADDR
+      - "CHALLENGE_DOCKER_REPO=${DOCKER_REPO_EXT}"
+      - CONTAINER_RUNNER
+      - DATABASE_URL
+      - "EXPLOIT_DOCKER_REPO=${DOCKER_REPO_EXT}"
+    volumes:
+      - ../../infrastructure/configs/registries-local.conf:/etc/containers/registries.conf
+    depends_on:
+      - database
+      - messagequeue
+    restart: on-failure
+
+  nautlius-auth:
+    build:
+      context: ../../infrastructure/auth-mock-server
+
+  messagequeue:
+    image: "docker.io/rabbitmq:latest"
+    ports:
+      - 127.0.0.1:9001:5672
+
+  dockerregistry:
+    image: "docker.io/registry:latest"
+    ports:
+      - 127.0.0.1:5000:5000
+      - 172.17.0.1:5000:5000
+
+  database:
+    image: "docker.io/postgres:latest"
+    environment:
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+    ports:
+      - 127.0.0.1:9002:5432
+
+  redis:
+    image: "docker.io/redis:latest"
+    ports:
+      - 127.0.0.1:9003:6379
+
+volumes:
+  livectf_exploits:
+  livectf_credentials:
+    external: true

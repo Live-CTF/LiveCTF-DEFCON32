@@ -1,0 +1,7 @@
+
+- name: allow CPU events for perf
+  become: true
+  ansible.posix.sysctl:
+    name: kernel.perf_event_paranoid
+    value: '0'
+    state: present

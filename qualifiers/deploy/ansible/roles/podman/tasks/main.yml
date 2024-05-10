@@ -1,0 +1,31 @@
+- name: Install podman
+  become: true
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    state: present
+    name:
+      - slirp4netns
+      - fuse-overlayfs
+      - podman
+
+- name: Configure LiveCTF registry
+  become: true
+  ansible.builtin.copy:
+    src: livectf-local.conf
+    dest: /etc/containers/registries.conf.d/livectf-local.conf
+
+- name: Configure LiveCTF challenges registry
+  become: true
+  ansible.builtin.template:
+    src: livectf-challenges.conf.j2
+    dest: /etc/containers/registries.conf.d/livectf-challenges.conf
+  vars:
+    registry_host: "{{ registry_ip }}:5000"
+
+- name: Configure LiveCTF exploits registry
+  become: true
+  ansible.builtin.template:
+    src: livectf-exploits.conf.j2
+    dest: /etc/containers/registries.conf.d/livectf-exploits.conf
+  vars:
+    registry_host: "{{ registry_ip }}:6000"

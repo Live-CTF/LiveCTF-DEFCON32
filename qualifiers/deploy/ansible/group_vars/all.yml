@@ -1,0 +1,36 @@
+admin_api_key: "[REDACTED]"
+amqp_password: "[REDACTED]"
+amqp_username: "livectf"
+api_host: "0.0.0.0"
+api_port: "80"
+api_basic_auth_password: "[REDACTED]" # Username: livectf
+auth_server_key: "[REDACTED]"
+auth_server_url: "[REDACTED]"
+build_path: "/tmp/builds"
+challenges_bucket: "livectf24-challenges" # GCP Bucket name
+challenge_registry_username: "livectf"
+challenge_registry_password: "[REDACTED]"
+database_db: "livectf"
+database_password: "[REDACTED]"
+database_username: "livectf"
+exploits_path: "livectf24-exploits" # GCP Bucket name
+exploits_storage: "gcp"
+gcp_service_account_key_backup: '[REDACTED]'
+gcp_service_account_key_challenge: '[REDACTED]'
+gcp_service_account_key_reader: '[REDACTED]'
+gcp_service_account_key_writer: '[REDACTED]'
+grafana_admin_password: "[REDACTED]"
+graylog_root_password: "[REDACTED]"
+graylog_secret: "[REDACTED]" # Username: admin
+hmac_key: "[UNUSED]" # TODO (P2): Remove usage from code base
+zerotier_network_id: "[REDACTED]"
+zerotier_api_key: "[REDACTED]"
+opensearch_admin_password: "[REDACTED]"
+stream_key: "[REDACTED]"
+
+scoreboard_livectf_id: 23
+scoreboard_livectf_username: "LiveCTF"
+scoreboard_livectf_password: "[REDACTED]"
+
+windows_server_admin_password: "[REDACTED]" # User: Administrator
+windows_server_ip: "[REDACTED]"

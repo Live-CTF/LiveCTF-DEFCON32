@@ -1,0 +1,41 @@
+challenge_id = "durnk"
+
+challenge_name = "Durnk"
+
+challenge_description = '''
+Had a couple too many glasses last night...
+Passed out in a haze dreaming about something something "me maybe" challenges...
+I think I hit my head on the windows?
+'''
+
+challenge_spoilers = '''
+Arbitrary winapi function calls! Pick your favorite library and function, you get
+one argument, and then call it! As many times as you want, though my solution only
+needed a single call (`gets` is overpowered).
+
+Since it's running under Wine, basically all of the addresses are static. I don't
+think Wine actually does ASLR?? Someone correct me if I'm wrong but after a couple
+Wine challenges I haven't seen it do that yet.
+
+Every teams' solution:
+1. malloc a buffer
+2. gets into that buffer
+3. WinExec the buffer
+
+My Clown Solution:
+0. Be too lazy to read up the winapi docs
+1. You know the stack pointer already, since it's not ASLR or anything
+2. Just call gets
+3. The argument to gets is the stack pointer
+4. It's Just Gets (TM)
+5. Blast that ROP chain right over the stack pointer
+6. #JustGetsThings
+7. When it exits, you just win. For free. Thanks, gets.
+8. 🤡
+
+ROP chain construction was pretty easy, only weird thing I found is that this msvcrt
+module has really shit gadgets for control over rdx. I ended up using some nightmare
+combo `pop rdx ; ror byte [rax-0x7d], 0xc4 ; retn` gadget and just setting rax to
+some address that can be dereferenced safely. Rest of the chain was standard stuff
+since you know the addresses of everything.
+'''

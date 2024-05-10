@@ -1,0 +1,35 @@
+challenge_id = "ndles"
+
+challenge_name = "n-dles"
+
+challenge_description = '''
+Behold the new generalized word-guessing game: n-dles!
+No longer are you limited to 5 letters or 6 guesses!
+Truly we have ascended in the realm of daily word puzzles.
+'''
+
+challenge_spoilers = '''
+Inspired by kphoenix :)
+
+Your daily word puzzle just got a new feature: buffer overflows.
+Thanks to an off-by-one in the bounds check, you can specify words 
+1 letter longer than the buffers have size for, allowing you to overwrite
+the lengths of future words and do a number on the stack contents.
+
+Here's what my solution does:
+
+Setup:
+* Set word length to 10 (9 bytes in each buffer, last byte overflows)
+* Set guess length to 7 (if you do 8, the bzero step will clobber the solution)
+* Enter first word, the last byte becomes the length of the second word, I used 0xff
+
+Leak addresses:
+* Enter second word, which now has length 0xff
+* After about 0x6c bytes into the second word, you've overflowed all the way to the read index variable on the stack
+* Set read index to 0xfe (one before end) so the read stops and the "guess" prints out all of the stack contents
+
+Exploit:
+* Enter third word, also with length 0xff
+* When you get to the index variable this time, change it to the offset of the return address on the stack
+* Write rop gadgets to return address for one_gadget
+'''

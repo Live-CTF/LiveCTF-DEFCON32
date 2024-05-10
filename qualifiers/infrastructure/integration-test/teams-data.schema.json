@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://livectf.com/teams.schema.json",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "integer"
+            },
+            "name": {
+                "type": "string"
+            },
+            "display_name": {
+                "type": "string"
+            },
+            "name_punycode": {
+                "type": "string"
+            },
+            "tickets": {
+                "type": "object",
+                "properties": {
+                }
+            }
+        }
+    }
+}
