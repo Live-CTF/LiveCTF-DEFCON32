@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %} - The Reader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <nav>
+        <h1>The Reader</h1>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            {% if session.user_id %}
+            <li><span>{{ session['username'] }}</span></li>
+                <li><a href="{{ url_for('import_rss_form') }}">Import posts</a></li>
+                <li><a href="{{ url_for('posts_list') }}">View posts</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+            <li><a href="{{ url_for('registration_form') }}">Register</a></li>
+            <li><a href="{{ url_for('login_form') }}">Log In</a></li>
+                {% endif %}
+        </ul>
+    </nav>
+    <section class="content">
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </section>
+</body>
+
+</html>

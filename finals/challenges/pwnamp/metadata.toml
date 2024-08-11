@@ -1,0 +1,22 @@
+challenge_id = "pwnamp"
+
+challenge_name = "Pwnamp"
+
+challenge_description = '''
+Sometimes I really miss those nice old music players where you could nicely organize your local collection of songs.
+'''
+
+challenge_spoilers = '''
+This challenge is a tool to manage your music collection. It allows creating and deleting songs and playlists.
+Playlists can be sorted by either artist, song title or release year.
+The sorting is performed when the playlist is viewed and done through a variant of treesort.
+The treesort uses an implicit tree with not enough memory allocated which means that if you can cause the input to form a very unbalanced tree it will write out of bounds on the heap.
+This can then be used to overwrite the sorting function pointer of another playlist with a win function which will be called when that playlist is displayed.
+'''
+
+author = "zetatwo"
+
+hints = [
+    "A playlist can cause an unbalanced sorting tree which leads to an out-of-bounds write. This can overwrite the function pointer of an adjacent playlist with the win function."
+    "The library index of the song is what's written in the tree so you might need to create a large number of songs. Mayne make the song titles prefixes of each other. We used XXXXXXXZXXZXXZY and XXXXXXXZXXZXXZX as our last two titles.",
+]

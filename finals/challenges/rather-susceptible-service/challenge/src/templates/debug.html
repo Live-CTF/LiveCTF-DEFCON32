@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Debug{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="debug_password">Password</label>
+    <input name="debug_password" id="debug_password" required>
+    <label for="command">command</label>
+    <input type="command" name="command" id="command" required>
+    <input type="submit" value="Execute">
+  </form>
+
+  {% if output %}
+  <p>
+    Result: 
+    <pre>{{output}}</pre>
+  </p>
+  {% endif %}
+{% endblock %}

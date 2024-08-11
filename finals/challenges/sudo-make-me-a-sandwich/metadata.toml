@@ -1,0 +1,23 @@
+challenge_id = "sudo-make-me-a-sandwich"
+
+challenge_name = "Sudo Make Me a Sandwich"
+
+challenge_description = '''
+The Sandwich Maker 3000 is broken and needs maintenance, but we don't have access! Fix it
+so we don't have to make the sandwiches ourselves!
+'''
+
+challenge_spoilers = '''
+This challenge is a straightforward format string vulnerability. The name of the employee
+when you clock in is displayed as a format string when asking which employee is the current one.
+There is an admin flag in the state that can be set with the format string using "%n" to overwrite
+it to a nonzero value. When the admin flag is set, entering maintenance mode will give
+the player a shell.
+'''
+
+author = "rusty"
+
+hints = [
+    "TODO: This is hint one",
+    "TODO: This is the second hint"
+]

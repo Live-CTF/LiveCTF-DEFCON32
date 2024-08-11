@@ -1,0 +1,34 @@
+challenge_id = "printf-plus-plus"
+
+challenge_name = "printf++"
+
+challenge_description = '''
+Why are all these challenges still using APIs from 1989 to do string formatting?
+We live in $current_year! There are plenty of new string formatting tools and we
+can use them to get the exact same types of bugs (but now with more curly braces)!
+'''
+
+challenge_spoilers = '''
+It's a format string buffer overflow but now using the C++ {fmt} library.
+
+The solution to this one is pretty straightforward:
+1. You have a fixed size buffer your formatting string is print into
+2. Use {0:1234} to print a big formatted string
+3. The formatted string is not NUL-terminated
+4. Make the string just long enough to run into a stack pointer and it'll leak it
+5. Pick up stack, libc, exe leaks pretty trivially with different length leaks
+6. Then just fill the stack with one group and use the rest of the space to write your ROP chain
+
+ROP chain is pretty much the same as the other challenges (but i386).
+I couldn't find any good one_gadgets (wtf does "reg contains GOT of libc" mean?
+I am too lazy to read the docs) so my chain is just hand-rolled, pretty simple.
+Just have to be careful to not have any null bytes.
+
+This one ended up being a bit disappointing due to all of the constraints I needed
+to impose to get it solvable without being a massive headache. Since the format
+string ends whenever there's a NUL byte, and since 64-bit address space always has
+a NUL byte in the high 8 bits, I had to compile this as 32-bit so you could specify
+more pointers and overwrite more than just RIP without the massive hassle of trying
+to pivot the stack. It ends up being pretty simple as a result, which is fine
+because this is LiveCTF and all, but a bit of the beauty was lost in my heart.
+'''

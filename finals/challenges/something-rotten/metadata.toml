@@ -1,0 +1,21 @@
+challenge_id = "something-rotten"
+
+challenge_name = "Something Rotten"
+
+challenge_description = '''
+I have encrypted my flag and now I want to decrypt it but it feels like something is a bit sour.
+'''
+
+challenge_spoilers = '''
+The pickle file executes a program that checks each character of the password input.
+Each character is checked by first performing an arithmetic operation and then comparing against a target.
+If there is a mismatch the program exists, otherwise it continues, thus only one password will make it through the pickle code.
+That password will then decrypt the flag which can be used to get a shell.
+'''
+
+author = "zetatwo"
+
+hints = [
+    "What determines is exit is called or not?",
+    "What are the inputs to each check? The fickle tool can be quite useful to make the code understandable."
+]

@@ -1,0 +1,33 @@
+challenge_id = "relocate-me-maybe"
+
+challenge_name = "Relocate Me Maybe"
+
+challenge_description = '''
+Hang on while I rebase the flag...
+'''
+
+challenge_spoilers = '''
+Insert arbitrary relocations into the ELF header during load, wcpgw?
+Well this challenge was a journey to write and trivial to solve (after writing),
+so it really fits the "docs reading" challenge category. 
+
+So how does it work?
+GNU_IFUNC! 
+Turns out, you can have a relocation that just calls a function at load time,
+provided that a certain relocation is used and a symbol exists.
+This function is run before main, constructor functions, mod_preinit_array,
+and even before the _start entrypoint of the binary. So like nothing exists and
+now I have to write scanf("%llx") using syscalls as my punishment.
+
+The actual solution path is pretty simple: just use R_X86_64_SIZE64 to write
+bytes directly into main() since it's mapped RWX during link time
+(thanks, DT_TEXTREL). Getting that to work would have been a cooler challenge,
+but not one I can easily construct in this format.
+'''
+
+author = "glenns"
+
+hints = [
+    "Find an opcode to write memory and control the value",
+    "It's opcode 33 (0x21)",
+]

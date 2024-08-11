@@ -1,0 +1,22 @@
+challenge_id = "vim"
+
+challenge_name = "Vim (pronounced VM)"
+
+challenge_description = '''
+TODO: create a description here for
+the challenge that is really cool
+and interesting
+'''
+
+challenge_spoilers = '''
+TODO: explain the challenge
+here for the commentators
+so that they can talk about it
+'''
+
+author = "negasora"
+
+hints = [
+    "Operation 5 doesn't check bounds correctly",
+    "Leak the key one byte at a time and win!"
+]

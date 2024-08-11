@@ -1,0 +1,17 @@
+challenge_id = "ez-calculator"
+
+challenge_name = "Sudden Death: EZ Calculator"
+
+challenge_description = '''
+its just predict rand()
+'''
+
+challenge_spoilers = '''
+'''
+
+author = "glenns"
+
+hints = [
+    "predict srand",
+    "",
+]

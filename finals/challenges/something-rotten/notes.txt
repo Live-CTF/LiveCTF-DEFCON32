@@ -1,0 +1,21 @@
+
+References:
+https://adrianstoll.com/post/python-in-a-pickle-an-explanation-of-the-python-pickle-format-and-security-problems/
+https://github.com/python/cpython/blob/3.11/Lib/pickle.py
+
+Important ideas:
+builtins.globals
+operator.add
+
+
+Concept:
+
+password = input('What is the password?')
+encrypted_flag = pickle.load(funky-file)
+flag = rc4.decrypt(password, encrypted_flag)
+print(flag)
+
+Explanation:
+
+pickle uses builtin.globals to fetch password and perform checks, if bad, exit.
+

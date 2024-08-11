@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="url">RSS URL</label>
+    <input name="url" id="url" required>
+    <input type="submit" value="Import RSS">
+  </form>
+{% endblock %}

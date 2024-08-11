@@ -1,0 +1,22 @@
+challenge_id = "sheap"
+
+challenge_name = "Sheap"
+
+challenge_description = '''
+TODO: create a description here for
+the challenge that is really cool
+and interesting
+'''
+
+challenge_spoilers = '''
+TODO: explain the challenge
+here for the commentators
+so that they can talk about it
+'''
+
+author = "TODO"
+
+hints = [
+    "TODO: This is hint one",
+    "TODO: This is the second hint"
+]

@@ -1,0 +1,16 @@
+challenge_id = "setjmp-around"
+
+challenge_name = "setjmp(3) Around"
+
+challenge_description = '''
+'''
+
+challenge_spoilers = '''
+'''
+
+author = "glenns"
+
+hints = [
+    "",
+    "",
+]

@@ -1,0 +1,35 @@
+Menu:
+1. List song library
+2. View song
+3. Add song
+4. Delete song
+5. List playlists
+6. Show playlist
+7. Create playlist
+8. Add song to playlist
+9. Remove song from playlist
+
+Data structures:
+
+song {
+    char *title
+    char *artist
+    int year
+}
+
+playlist {
+    func *sorter
+    size_t num_songs
+    size_t max_songs
+    size_t songs[] // malloc( sizeof(struct) + array_len*sizeof(array element) )
+}
+
+typedef uint16_t node_t 
+
+playlist_sorter {
+    node_t songs[]
+}
+
+song *library[1<<14];
+playlist *playlists[32];
+

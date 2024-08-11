@@ -1,0 +1,78 @@
+challenge_id = "intel-1001"
+
+challenge_name = "Intel 1001"
+
+challenge_description = '''
+We didn't have the budget for an 64-bit VM, or even a 8-bit one, or even a 2-bit one...
+'''
+
+challenge_spoilers = '''
+Stupid VM with one-bit registers because lol
+
+Ops are:
+0  SetReg  reg <- imm1
+1  Swap    r0 <-> reg
+2  Load    r0 <- [r1:r2:r3:r4:r5:r6:r7:r8:r9:r10:r11:r12:r13:r14:r15:r16]
+3  Store   [r1:r2:r3:r4:r5:r6:r7:r8:r9:r10:r11:r12:r13:r14:r15:r16] <- r0
+4  Jmp     pc <- r1:r2:r3:r4:r5:r6:r7:r8:r9:r10:r11:r12:r13
+5  Skip    if r0 == 1 { pc ++ }
+6  Read    r0 <- input
+7  Write   output <- r0
+8  Exit    halt r0
+
+Bug:
+Load/Store have no bounds check (of course) and you can peek/poke stack memory
+in main() with them.
+
+My solution:
+
+I wrote a routine that does 
+  read_all:
+    r0 <- input
+    r1 <-> r0
+    ... repeat all regs
+So now I have control over the [r1:...:r16] ops
+
+From there I can construct a Read primitive via
+  read:
+    read_all
+    r0 <- [r1:...:r16]
+    output <- r0
+And print one bit of memory from any 16-bit location.
+
+Write is pretty similar:
+  write:
+    read_all
+    r0 <- input
+    [r1:...:r16] <- r0
+The only trick here is that I actually do `r0 <- input` 8 times so I don't have to deal
+with bit packing my input (which would suck)
+
+Now I can read and write arbitrary bits of memory, so I threw up a simple menu loop that
+calls whichever routine I need:
+  menu:
+    read_all
+    pc <- [r1:...:r16]
+Yeah it's just jump to arbitrary address.
+
+Total code was:
+  code:
+    menu
+    "AA"
+    write
+    "BB"
+    read
+    "CC"
+    exit
+And I use the markers as labels to know their offsets. Then it's just a matter of
+reading the stack contents for the image base leak and writing over the return address
+with the win function.
+
+'''
+
+author = "glenns"
+
+hints = [
+    "bit-endianness sucks, use the debug mode and make sure your reads/writes are as expected",
+    "load (opcode 2)/store (opcode 3) can go oob of the vm's memory",
+]

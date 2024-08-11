@@ -1,0 +1,39 @@
+challenge_id = "memories"
+
+challenge_name = "Memories"
+
+challenge_description = '''
+Was it a dream, or just a memory?
+'''
+
+challenge_spoilers = '''
+This is a challenge about leveraging uninitialized stack memory, which can be a
+tricky thing to turn into a reliable exploit.
+
+In order to take advantage of this, an attacker has to be able to control the
+stack contents of frames of similar depths. The first hint this is possible is
+the unusual ability to send up to 4 commands at once, resulting in successive
+calls to the processing functions without any function calls in between.
+
+There are two issues where uninitialized values are used:
+1. Some calls to get_index incorrectly check the return value and can proceed
+   despite the index argument not being initialized. The delete_block
+   function uses read_number instead of read_index, allowing an index to be set
+   to an arbitrary value, which can allow this index value to be reused in a
+   subsequent command.
+2. Rather than returning if an incorrect index is used, the edit_block function
+   checks the contents of a funtion-local stack struct to validate it before
+   using it.
+
+The intended solution is to use change_name to set the contents of a stack
+buffer, and then use invoke edit_block with an incorrect index value, causing
+the stale stack memory to be used as a block structure and giving a
+write-what-where primitive.
+'''
+
+author = "seeinglogic"
+
+hints = [
+    "Look for uninitialized stack data being used",
+    "change_name lets you write arbitrary data to a stack buffer",
+]

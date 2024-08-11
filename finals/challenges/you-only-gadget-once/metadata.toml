@@ -1,0 +1,18 @@
+challenge_id = "you-only-gadget-once"
+
+challenge_name = "You Only Gadget Once"
+
+challenge_description = '''
+SUDDEN DEATH: I hope your tools work!
+'''
+
+challenge_spoilers = '''
+Look if you had one gadget, one opportunity, would you go for it, or just let it slip?
+'''
+
+author = "glenns"
+
+hints = [
+    "gem install one_gadget && one_gadget ./libc.so.6 bro come on",
+    "If this shows up I will be disappointed in you."
+]

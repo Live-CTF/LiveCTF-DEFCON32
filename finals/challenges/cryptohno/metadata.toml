@@ -1,0 +1,22 @@
+challenge_id = "cryptohno"
+
+challenge_name = "CryptOhNo"
+
+challenge_description = '''
+TODO: create a description here for
+the challenge that is really cool
+and interesting
+'''
+
+challenge_spoilers = '''
+TODO: explain the challenge
+here for the commentators
+so that they can talk about it
+'''
+
+author = "negasora"
+
+hints = [
+    "This is a PRIME *wink* *wink* example of a UAF",
+    "n=p*q, or... wait... maybe n=p*p???"
+]

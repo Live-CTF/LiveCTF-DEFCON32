@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Posts{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+{% for post in posts %}
+<li><a href="{{ url_for('post_view', post_id=post['id']) }}">{{ post['title'] }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

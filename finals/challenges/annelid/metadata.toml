@@ -1,0 +1,26 @@
+challenge_id = "annelid"
+
+challenge_name = "annelid"
+
+challenge_description = '''
+The study of fossils can be instructive.
+'''
+
+challenge_spoilers = '''
+This is a reprise of the MS08-67 bug, most famous for being exploited by the
+Conficker worm.
+
+It was also notable one of the DARPA Cyber Grand Challenge "rematch" challenges,
+chosen both due to the impact as well as the unique characteristics of the bug,
+namely that the special structure of the code made it exploitable despite the
+presence of stack cookies in most of the functions involved.
+
+Read more here: https://www.lungetech.com/cgc-corpus/challenges/CROMU_00095/
+'''
+
+author = "seeinglogic"
+
+hints = [
+    "What happens if the path begins with a backslash?",
+    "If the path begins with a backslash, resolving \"previous\" directories can cause it to look for backslashes beyond the start of the path"
+]

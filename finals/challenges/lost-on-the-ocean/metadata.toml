@@ -1,0 +1,19 @@
+challenge_id = "lost-on-the-ocean"
+
+challenge_name = "Lost on the Ocean"
+
+challenge_description = '''
+I have been lost on the ocean for quite a while now. This person claims to be able to lead me to shore if I can just provide the correct password.
+'''
+
+challenge_spoilers = '''
+The challenge consists of a very basic crackme implemented in Harbour which is an open-source implementation of Clipper which in turn is based on dBase and other languages in the xBase family.
+There are multiple ways to solve the challenge but the most straightforward is probably to use instruction counting since the crackme checks the password character by character and exits on a mismatch.
+'''
+
+author = "zetatwo"
+
+hints = [
+    "The password is compared character by character but out of order.",
+    "The reference solution uses a GDB script with a breakpoint in hb_itemStrCmp to get the character that's being compared."
+]
