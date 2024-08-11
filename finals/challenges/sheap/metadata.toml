@@ -14,9 +14,9 @@ here for the commentators
 so that they can talk about it
 '''
 
-author = "TODO"
+author = "negasora"
 
 hints = [
-    "TODO: This is hint one",
-    "TODO: This is the second hint"
+    "sbrk(0) gives you the end of the heap and seccomp is per-thread :o",
+    "You don't need to be precise with your overwrites, sometimes spray and pray is the way :)"
 ]

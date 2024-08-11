@@ -14,4 +14,6 @@ This repository contains infrastructure, challenges and solutions for the DEFCON
 
 ## Finals
 
-TBA August 2024
+- [Finals challenges](finals/challenges)
+
+More information about matches and results will be uploaded momentarily.
