@@ -10,7 +10,7 @@ challenge_spoilers = '''
 Look if you had one gadget, one opportunity, would you go for it, or just let it slip?
 '''
 
-author = "glenns"
+challenge_authors = ["glenns"]
 
 hints = [
     "gem install one_gadget && one_gadget ./libc.so.6 bro come on",

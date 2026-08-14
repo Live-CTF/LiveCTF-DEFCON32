@@ -10,4 +10,4 @@ challenge_spoilers = '''
 Have you tried counting?
 '''
 
-author = "jordan"
+challenge_authors = ["psifertex"]

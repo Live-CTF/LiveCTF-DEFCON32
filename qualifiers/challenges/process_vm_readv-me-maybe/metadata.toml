@@ -38,3 +38,5 @@ I managed to get one_gadget working with only 3 writes to the parent,
 The child code was written with asm because binja's SCC generated like 500
 bytes of, while beautifully crafted, very unoptimized shellcode.
 '''
+
+challenge_authors = ["glenns"]

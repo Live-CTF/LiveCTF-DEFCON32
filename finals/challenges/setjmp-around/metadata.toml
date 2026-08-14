@@ -8,7 +8,7 @@ challenge_description = '''
 challenge_spoilers = '''
 '''
 
-author = "glenns"
+challenge_authors = ["glenns"]
 
 hints = [
     "",

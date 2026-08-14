@@ -32,3 +32,5 @@ more pointers and overwrite more than just RIP without the massive hassle of try
 to pivot the stack. It ends up being pretty simple as a result, which is fine
 because this is LiveCTF and all, but a bit of the beauty was lost in my heart.
 '''
+
+challenge_authors = ["glenns"]

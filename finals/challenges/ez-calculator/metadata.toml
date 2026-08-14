@@ -9,7 +9,7 @@ its just predict rand()
 challenge_spoilers = '''
 '''
 
-author = "glenns"
+challenge_authors = ["glenns"]
 
 hints = [
     "predict srand",

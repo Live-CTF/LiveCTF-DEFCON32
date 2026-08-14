@@ -18,7 +18,7 @@ presence of stack cookies in most of the functions involved.
 Read more here: https://www.lungetech.com/cgc-corpus/challenges/CROMU_00095/
 '''
 
-author = "seeinglogic"
+challenge_authors = ["seeinglogic"]
 
 hints = [
     "What happens if the path begins with a backslash?",

@@ -13,7 +13,7 @@ The adapter matches the URL with a prefix. This can be abused by making the serv
 Then the backend can be contacted directly which will eventually lead to code execution through the debug interface. 
 '''
 
-author = "zetatwo"
+challenge_authors = ["zetatwo"]
 
 hints = [
     "How is the API key passed to the backend?",

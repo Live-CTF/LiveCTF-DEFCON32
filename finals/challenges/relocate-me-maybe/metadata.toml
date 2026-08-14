@@ -25,7 +25,7 @@ bytes directly into main() since it's mapped RWX during link time
 but not one I can easily construct in this format.
 '''
 
-author = "glenns"
+challenge_authors = ["glenns"]
 
 hints = [
     "Find an opcode to write memory and control the value",

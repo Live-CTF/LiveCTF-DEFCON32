@@ -33,3 +33,5 @@ Exploit:
 * When you get to the index variable this time, change it to the offset of the return address on the stack
 * Write rop gadgets to return address for one_gadget
 '''
+
+challenge_authors = ["glenns"]

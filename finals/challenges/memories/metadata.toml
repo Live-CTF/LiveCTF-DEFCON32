@@ -31,7 +31,7 @@ the stale stack memory to be used as a block structure and giving a
 write-what-where primitive.
 '''
 
-author = "seeinglogic"
+challenge_authors = ["seeinglogic"]
 
 hints = [
     "Look for uninitialized stack data being used",

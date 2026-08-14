@@ -14,7 +14,7 @@ here for the commentators
 so that they can talk about it
 '''
 
-author = "negasora"
+challenge_authors = ["negasora"]
 
 hints = [
     "sbrk(0) gives you the end of the heap and seccomp is per-thread :o",

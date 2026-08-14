@@ -39,3 +39,5 @@ combo `pop rdx ; ror byte [rax-0x7d], 0xc4 ; retn` gadget and just setting rax t
 some address that can be dereferenced safely. Rest of the chain was standard stuff
 since you know the addresses of everything.
 '''
+
+challenge_authors = ["zetatwo", "glenns"]

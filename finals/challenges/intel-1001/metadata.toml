@@ -70,7 +70,7 @@ with the win function.
 
 '''
 
-author = "glenns"
+challenge_authors = ["glenns"]
 
 hints = [
     "bit-endianness sucks, use the debug mode and make sure your reads/writes are as expected",

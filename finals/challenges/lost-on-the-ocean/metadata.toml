@@ -11,7 +11,7 @@ The challenge consists of a very basic crackme implemented in Harbour which is a
 There are multiple ways to solve the challenge but the most straightforward is probably to use instruction counting since the crackme checks the password character by character and exits on a mismatch.
 '''
 
-author = "zetatwo"
+challenge_authors = ["zetatwo"]
 
 hints = [
     "The password is compared character by character but out of order.",

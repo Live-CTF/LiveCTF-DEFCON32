@@ -14,7 +14,7 @@ here for the commentators
 so that they can talk about it
 '''
 
-author = "negasora"
+challenge_authors = ["negasora"]
 
 hints = [
     "Operation 5 doesn't check bounds correctly",

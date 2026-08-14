@@ -14,7 +14,7 @@ The treesort uses an implicit tree with not enough memory allocated which means 
 This can then be used to overwrite the sorting function pointer of another playlist with a win function which will be called when that playlist is displayed.
 '''
 
-author = "zetatwo"
+challenge_authors = ["zetatwo"]
 
 hints = [
     "A playlist can cause an unbalanced sorting tree which leads to an out-of-bounds write. This can overwrite the function pointer of an adjacent playlist with the win function.",

@@ -15,7 +15,7 @@ it to a nonzero value. When the admin flag is set, entering maintenance mode wil
 the player a shell.
 '''
 
-author = "rusty"
+challenge_authors = ["rusty"]
 
 hints = [
     "TODO: This is hint one",
